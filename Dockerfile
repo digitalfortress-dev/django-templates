@@ -20,6 +20,8 @@ WORKDIR code
 
 EXPOSE 80
 
+ENV DJANGO_SETTINGS_MODULE "project_name.settings.production"
+
 ENV ENV ${ENV}
 ENV SECRET_KEY ${SECRET_KEY}
 ENV DB_NAME ${DB_NAME}
@@ -29,5 +31,7 @@ ENV DB_HOST ${DB_HOST}
 ENV CORS_ALLOWED_ORIGINS ${CORS_ALLOWED_ORIGINS}
 ENV HOST ${HOST}
 
+RUN ["chmod", "+x", "./docker-entrypoint.sh"]
+
 # Run the production server
-CMD gunicorn --bind 0.0.0.0:80 --access-logfile - project_name.wsgi
+ENTRYPOINT ["./docker-entrypoint.sh"]
