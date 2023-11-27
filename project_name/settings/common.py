@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "drf_yasg",
     "project_name.users",
+    "project_name.refresh_tokens",
 ]
 
 MIDDLEWARE = [
@@ -148,6 +149,8 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
     "SLIDING_TOKEN_LIFETIME": timedelta(hours=1),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=7),
+    "TOKEN_REFRESH_SERIALIZER": "project_name.refresh_tokens.serializers.CustomTokenRefreshSerializer",
+    "TOKEN_OBTAIN_SERIALIZER": "project_name.refresh_tokens.serializers.CustomTokenObtainPairSerializer",
 }
 
 # Docs
