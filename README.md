@@ -1,8 +1,8 @@
 <p align="center">
   <a href="https://www.digitalfortress.dev/">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://okela-bucket-s3.s3.ap-southeast-1.amazonaws.com/logo/Digital+Fortress+-+Logo.png">
-      <img alt="Digital Fortress logo" src="https://okela-bucket-s3.s3.ap-southeast-1.amazonaws.com/logo/Digital+Fortress+-+Logo.png">
+      <source media="(prefers-color-scheme: dark)" srcset="https://digitalfortress-s3-bucket-vpcxuhhdwecuj.s3.amazonaws.com/Group+1410083530.svg">
+      <img alt="Digital Fortress logo" src="https://digitalfortress-s3-bucket-vpcxuhhdwecuj.s3.amazonaws.com/Group+1410083530.svg">
     </picture>    
   </a>
 </p>
