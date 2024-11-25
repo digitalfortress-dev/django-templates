@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+
 import os
 from datetime import timedelta
 from pathlib import Path
@@ -29,8 +30,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "drf_yasg",
-    "project_name.users",
-    "project_name.refresh_tokens",
+    "authentication",
+    "refresh_tokens",
 ]
 
 MIDDLEWARE = [
@@ -124,7 +125,7 @@ REST_FRAMEWORK = {
 }
 
 # auth config
-AUTH_USER_MODEL = "users.User"
+AUTH_USER_MODEL = "authentication.User"
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
@@ -149,8 +150,8 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
     "SLIDING_TOKEN_LIFETIME": timedelta(hours=1),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=7),
-    "TOKEN_REFRESH_SERIALIZER": "project_name.refresh_tokens.serializers.CustomTokenRefreshSerializer",
-    "TOKEN_OBTAIN_SERIALIZER": "project_name.refresh_tokens.serializers.CustomTokenObtainPairSerializer",
+    "TOKEN_REFRESH_SERIALIZER": "refresh_tokens.serializers.CustomTokenRefreshSerializer",
+    "TOKEN_OBTAIN_SERIALIZER": "refresh_tokens.serializers.CustomTokenObtainPairSerializer",
 }
 
 # Docs

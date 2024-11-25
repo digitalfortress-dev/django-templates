@@ -6,7 +6,7 @@ from rest_framework_simplejwt.serializers import (
 )
 from rest_framework_simplejwt.settings import api_settings
 
-from project_name.refresh_tokens.models import (
+from refresh_tokens.models import (
     RefreshToken,
     RefreshTokenFamily,
     RefreshTokenFamilyStatus,
