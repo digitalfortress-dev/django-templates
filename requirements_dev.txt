@@ -19,6 +19,7 @@ coverage==7.6.8
 black==24.10.0
 pylint-django==2.6.1
 pre-commit==4.0.1
+codespell==2.3.0
 
 # Certificates
 cryptography==43.0.3
