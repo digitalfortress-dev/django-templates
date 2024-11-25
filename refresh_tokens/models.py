@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from project_name.users.models import User
+from authentication.models import User
 
 
 class RefreshTokenFamilyStatus(models.TextChoices):

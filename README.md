@@ -21,7 +21,7 @@
 
 1. Install dependencies
    ```
-   pip install -r requirements.txt
+   pip install -r requirements.dev.txt
    ```
 2. Update database information in `project_name/settings/local.py`
 3. Migrate database
