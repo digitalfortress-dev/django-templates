@@ -15,7 +15,7 @@
 - [Python](https://www.python.org/) v3.11
 - [PostgreSQL](https://www.postgresql.org/)
 
-## Setup
+## Usage
 
 ### Setup environment
 
@@ -36,6 +36,28 @@
 ### Launch
    ```
    python manage.py runserver 0.0.0.0:8000
+   ```
+
+### Docker
+1. Build image
+   ```
+   docker build \
+   --build-arg ENV=dev \
+   --build-arg SECRET_KEY=your_key \
+   --build-arg ALLOWED_HOSTS=localhost \
+   --build-arg HOST=http://localhost:8000/ \
+   --build-arg DB_NAME=django_template \
+   --build-arg DB_USERNAME=your_username \
+   --build-arg DB_PASSWORD=your_password \
+   --build-arg DB_HOST=host.docker.internal \
+   --build-arg DB_PORT=5432 \
+   --build-arg JWT_SIGNING_KEY=your_key \
+   --build-arg CORS_ALLOWED_ORIGINS=http://localhost:8000 \
+   -t django-template:latest .
+   ```
+2. Run container
+   ```
+   docker run -p 8000:80 django-template
    ```
 
 ## License
