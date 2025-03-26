@@ -44,8 +44,16 @@ urlpatterns = [
     ),
     # health
     path("api/health", lambda request: HttpResponse("OK")),
-    # apis
+    # admin
     path("admin/", admin.site.urls),
-    path("api/", include("authentication.urls")),
-    path("api/", include("refresh_tokens.urls")),
+    # apis
+    path(
+        "api/v1/",
+        include(
+            [
+                path("auth/", include("apps.authentication.urls")),
+                path("auth/refresh-token", include("apps.refresh_tokens.urls")),
+            ]
+        ),
+    ),
 ]

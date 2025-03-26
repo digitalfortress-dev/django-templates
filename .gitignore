@@ -271,3 +271,6 @@ tags
 .pytest_cache
 
 .idea/
+
+# Dotenv
+.env

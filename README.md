@@ -12,7 +12,7 @@
 # Django template
 
 ## Prerequisites
-- [Python](https://www.python.org/) v3.10
+- [Python](https://www.python.org/) v3.11
 - [PostgreSQL](https://www.postgresql.org/)
 
 ## Setup
@@ -21,10 +21,14 @@
 
 1. Install dependencies
    ```
-   pip install -r requirements.dev.txt
+   pip install -r requirements_dev.txt
    ```
-2. Update database information in `project_name/settings/local.py`
-3. Migrate database
+2. Init .env file
+   ```
+   cp .env.example .env
+   ```
+3. Update .env variables
+4. Migrate database
    ```
    python manage.py migrate
    ```
