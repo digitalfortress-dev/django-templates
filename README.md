@@ -12,19 +12,23 @@
 # Django template
 
 ## Prerequisites
-- [Python](https://www.python.org/) v3.10
+- [Python](https://www.python.org/) v3.11
 - [PostgreSQL](https://www.postgresql.org/)
 
-## Setup
+## Usage
 
 ### Setup environment
 
 1. Install dependencies
    ```
-   pip install -r requirements.dev.txt
+   pip install -r requirements_dev.txt
    ```
-2. Update database information in `project_name/settings/local.py`
-3. Migrate database
+2. Init .env file
+   ```
+   cp .env.example .env
+   ```
+3. Update .env variables
+4. Migrate database
    ```
    python manage.py migrate
    ```
@@ -32,6 +36,28 @@
 ### Launch
    ```
    python manage.py runserver 0.0.0.0:8000
+   ```
+
+### Docker
+1. Build image
+   ```
+   docker build \
+   --build-arg ENV=dev \
+   --build-arg SECRET_KEY=your_key \
+   --build-arg ALLOWED_HOSTS=localhost \
+   --build-arg HOST=http://localhost:8000/ \
+   --build-arg DB_NAME=django_template \
+   --build-arg DB_USERNAME=your_username \
+   --build-arg DB_PASSWORD=your_password \
+   --build-arg DB_HOST=host.docker.internal \
+   --build-arg DB_PORT=5432 \
+   --build-arg JWT_SIGNING_KEY=your_key \
+   --build-arg CORS_ALLOWED_ORIGINS=http://localhost:8000 \
+   -t django-template:latest .
+   ```
+2. Run container
+   ```
+   docker run -p 8000:80 django-template
    ```
 
 ## License
