@@ -1,24 +1,12 @@
 repos:
-  - repo: https://github.com/pycqa/isort
-    rev: 6.0.1
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.11.2
     hooks:
-      - id: isort
-        name: isort (python)
-        args: ["--profile=black"]
-        language_version: python3.10
-        stages: [pre-commit]  # Added stages key with a valid value
-  - repo: https://github.com/psf/black
-    rev: 25.1.0
-    hooks:
-      - id: black
-        language_version: python3.10
-  - repo: https://github.com/pycqa/flake8
-    rev: 7.1.2
-    hooks:
-      - id: flake8
-        language_version: python3.10
+      - id: ruff
+      - id: ruff-format
+
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.1
     hooks:
       - id: codespell
-        language_version: python3.10
+        language_version: python3.11

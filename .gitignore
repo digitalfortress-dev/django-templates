@@ -274,3 +274,6 @@ tags
 
 # Dotenv
 .env
+
+# Ruff cache
+.ruff_cache

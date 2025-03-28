@@ -12,8 +12,8 @@
 # Django template
 
 ## Prerequisites
-- [Python](https://www.python.org/) v3.11
 - [PostgreSQL](https://www.postgresql.org/)
+- [uv](https://docs.astral.sh/uv/)
 
 ## Usage
 
@@ -21,7 +21,8 @@
 
 1. Install dependencies
    ```
-   pip install -r requirements_dev.txt
+   uv sync
+   source .venv/bin/activate
    ```
 2. Init .env file
    ```
@@ -38,6 +39,11 @@
    python manage.py runserver 0.0.0.0:8000
    ```
    API documentation URL: http://localhost:8000/api/v1/docs
+
+### Install pre-commit
+   ```
+   pre-commit install
+   ```
 
 ### Docker
 1. Build image
