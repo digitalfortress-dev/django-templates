@@ -48,8 +48,8 @@ INSTALLED_APPS = [
     "corsheaders",
     "drf_spectacular",
     # apps
-    "apps.authentication",
-    "apps.refresh_tokens",
+    "apps.v1.authentication",
+    "apps.v1.refresh_tokens",
 ]
 
 MIDDLEWARE = [
@@ -175,8 +175,8 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
     "SLIDING_TOKEN_LIFETIME": timedelta(hours=1),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=7),
-    "TOKEN_REFRESH_SERIALIZER": "apps.refresh_tokens.serializers.CustomTokenRefreshSerializer",
-    "TOKEN_OBTAIN_SERIALIZER": "apps.refresh_tokens.serializers.CustomTokenObtainPairSerializer",
+    "TOKEN_REFRESH_SERIALIZER": "apps.v1.refresh_tokens.serializers.CustomTokenRefreshSerializer",
+    "TOKEN_OBTAIN_SERIALIZER": "apps.v1.refresh_tokens.serializers.CustomTokenObtainPairSerializer",
 }
 
 # Docs

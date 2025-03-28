@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class RefreshTokensConfig(AppConfig):
+class AuthenticationConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "apps.refresh_tokens"
+    name = "apps.v1.authentication"

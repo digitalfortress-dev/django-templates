@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from apps.authentication.views import RegistrationAPIView
+from apps.v1.authentication.views import RegistrationAPIView
 
 app_name = "auth"
 

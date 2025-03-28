@@ -3,7 +3,7 @@
 import django.utils.timezone
 from django.db import migrations, models
 
-import apps.authentication.models
+import apps.v1.authentication.models
 
 
 class Migration(migrations.Migration):
@@ -111,7 +111,7 @@ class Migration(migrations.Migration):
                 "abstract": False,
             },
             managers=[
-                ("objects", apps.authentication.models.UserManager()),
+                ("objects", apps.v1.authentication.models.UserManager()),
             ],
         ),
     ]
