@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.authentication.models import User
+from apps.v1.authentication.models import User
 
 
 class RegistrationSerializer(serializers.ModelSerializer):

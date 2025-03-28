@@ -37,6 +37,7 @@
    ```
    python manage.py runserver 0.0.0.0:8000
    ```
+   API documentation URL: http://localhost:8000/api/v1/docs
 
 ### Docker
 1. Build image

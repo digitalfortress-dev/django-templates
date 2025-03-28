@@ -1,7 +1,7 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
 
-from apps.authentication.serializers import RegistrationSerializer
+from apps.v1.authentication.serializers import RegistrationSerializer
 
 
 class RegistrationAPIView(generics.GenericAPIView):
