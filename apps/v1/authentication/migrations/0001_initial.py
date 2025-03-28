@@ -7,7 +7,6 @@ import apps.v1.authentication.models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [

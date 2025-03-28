@@ -2,8 +2,14 @@
 # Base build stage
 FROM python:3.11-alpine AS builder
 
+# Install uv
+RUN apk --no-cache add curl ca-certificates
+ADD https://astral.sh/uv/0.6.10/install.sh /uv-installer.sh
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+ENV PATH="/root/.local/bin/:$PATH"
+
 # Create the app directory
-RUN mkdir /app
+ADD . /app
 
 # Set the working directory
 WORKDIR /app
@@ -13,9 +19,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Install dependencies first for caching benefit
-RUN pip install --upgrade pip
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
+RUN uv sync --frozen --no-dev
 
 # -----------------
 # Production stage
@@ -49,8 +53,7 @@ ENV JWT_SIGNING_KEY ${JWT_SIGNING_KEY}
 ENV CORS_ALLOWED_ORIGINS ${CORS_ALLOWED_ORIGINS}
 
 # Copy the Python dependencies from the builder stage
-COPY --from=builder /usr/local/lib/python3.11/site-packages/ /usr/local/lib/python3.11/site-packages/
-COPY --from=builder /usr/local/bin/ /usr/local/bin/
+COPY --from=builder /app/.venv/lib/python3.11/site-packages/ /usr/local/lib/python3.11/site-packages/
 
 # Set the working directory
 WORKDIR /app
