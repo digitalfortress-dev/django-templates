@@ -11,42 +11,77 @@
 
 # Django template
 
-## Prerequisites
+## Usage
+
+### Option 1: Run with Docker Compose
+
+#### Prerequisites
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+
+#### Steps
+1. Start the application using Docker Compose:
+   ```
+   docker-compose -f ./docker-compose.local.yml up -d
+   ```
+
+2. Access the application at [http://localhost:8000](http://localhost:8000).
+
+   - API documentation URL: [http://localhost:8000/api/v1/docs](http://localhost:8000/api/v1/docs)
+
+3. To stop the application:
+   ```
+   docker-compose -f ./docker-compose.local.yml down
+   ```
+
+---
+
+### Option 2: Run Manually
+
+#### Prerequisites
 - [PostgreSQL](https://www.postgresql.org/)
 - [uv](https://docs.astral.sh/uv/)
 
-## Usage
+#### Setup Environment
 
-### Setup environment
-
-1. Install dependencies
+1. Install dependencies:
    ```
    uv sync
    source .venv/bin/activate
    ```
-2. Init .env file
+
+2. Initialize the `.env` file:
    ```
    cp .env.example .env
    ```
-3. Update .env variables
-4. Migrate database
+
+3. Update the `.env` file with your environment variables.
+
+4. Migrate the database:
    ```
    python manage.py migrate
    ```
 
-### Launch
+#### Launch Application
+
+1. Start the development server:
    ```
    python manage.py runserver 0.0.0.0:8000
    ```
-   API documentation URL: http://localhost:8000/api/v1/docs
 
-### Install pre-commit
-   ```
-   pre-commit install
-   ```
+2. Access the application at [http://localhost:8000](http://localhost:8000).
 
-### Docker
-1. Build image
+   - API documentation URL: [http://localhost:8000/api/v1/docs](http://localhost:8000/api/v1/docs)
+
+---
+
+### Docker (Manual Build and Run)
+
+#### Prerequisites
+- [Docker](https://www.docker.com/)
+
+#### Steps
+1. Build the Docker image:
    ```
    docker build \
    --build-arg ENV=dev \
@@ -62,10 +97,22 @@
    --build-arg CORS_ALLOWED_ORIGINS=http://localhost:8000 \
    -t django-template:latest .
    ```
-2. Run container
+
+2. Run the Docker container:
    ```
    docker run -p 8000:80 django-template
    ```
+
+---
+
+## Install Pre-commit Hooks
+
+To ensure code quality, install pre-commit hooks:
+```
+pre-commit install
+```
+
+---
 
 ## License
 

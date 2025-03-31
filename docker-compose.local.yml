@@ -1,0 +1,43 @@
+services:
+  postgres:
+    image: postgres:latest
+    hostname: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: project_name
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api
+    ports:
+      - "8000:80"
+    depends_on:
+      - postgres
+    environment:
+      - ENV=dev
+      - SECRET_KEY=example_secret_key
+      - ALLOWED_HOSTS=localhost
+      - HOST=http://localhost:8000/
+      - DB_NAME=project_name
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - JWT_SIGNING_KEY=example_signing_key
+      - CORS_ALLOWED_ORIGINS=http://localhost:8000
+    
+    # Enable hot reloading
+    entrypoint: sh -c "python manage.py migrate --noinput; python manage.py runserver 0.0.0.0:80"
+    volumes:
+      - .:/app
+
+
+volumes:
+  postgres_data:
